@@ -12,28 +12,158 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery-3.6.1.min.js"></script>
     <style>
-        body{box-sizing:border-box;overflow:hidden;position:relative;}
-        .evt_test_hero{width:100%;height:100vh;display:flex;background:rgba(255,0,0,0.5);justify-content:center;align-items:center;flex-direction:column;justify-content: space-evenly;}
-        .evt_form_wrap{position:absolute;top:0;left:0;width:100%;height:100vh;display:flex;background:rgba(255,255,0,0.5);justify-content:center;align-items:center;flex-direction:column;justify-content: space-evenly;}
-        .evt_form_wrap button{position:absolute;top:0;right:0;font-size:30px;font-weight:bold;border:0;background:none;}
+
+        .input-group {
+            width: 100%;
+            position: relative;
+            border-bottom: 2px solid #457FEE;
+            border-radius:none;
+            margin-bottom:1em;
+            box-sizing:border-box;
+        }
+        .input-group input {
+            padding: 10px 0;
+            border: none;
+            background-color:#fff;
+            width: 100%;
+            color: #000;
+            font-size: 16px;
+            font-weight:bold;
+            line-height:1.4;
+            box-sizing:border-box;
+        }
+        .input-group ::placeholder{
+            color:#fff;
+        }
+
+        .input-group:hover,
+        .input-group:focus-within {
+            border-color:none;
+        }
+
+        .input-group:hover ::placeholder,
+        .input-group:focus-within ::placeholder{
+            color:#aaa;
+        }
+
+        .input-group input:focus,
+        .input-group:hover input {
+            color: #000;
+            border:none;
+            outline:none;
+        }
+
+        .input-group label {
+            position: absolute;
+            background-color:transparent;
+            padding: 0;
+            line-height:1.4;
+            font-size:16px;
+            top: 50%;
+            left: 0%;
+            transform:translateY(-50%);
+            /* bottom: 0; */
+            color: #aaa;
+            cursor: pointer;
+            transition:all 0.2s ease;
+            outline:none;
+        }
+
+        .input-group:hover label {
+            color:#000;
+        }
+
+        .input-group:focus-within label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            padding: 0px 0;
+            top: -12px;
+            left: 0;
+            bottom: auto;
+            color: #aaa;
+            border:none;
+            outline:none;
+            font-size:12px;
+        }
+
+        body{box-sizing:border-box;overflow:hidden;position:relative;font-family:'Noto Sans KR','맑은고딕','Malgun Gothic','Apple Gothic',sans-serif;}
+        body *{box-sizing:border-box;}
+
+        /* landing sample */
+        .evt_test_hero{position:relative;width:100%;height:100vh;display:flex;padding:5%;background:rgba(255,0,0,0.5);justify-content:center;align-items:center;flex-direction:column;justify-content: space-evenly;}
+        .evt_test_hero .btn_join_evt{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:block;width:90%;text-align:center;padding:10px;border:1px solid #ccc;}
+
+        .evt_form_wrap{display:none;position:absolute;top:0;left:0;width:100%;height:100vh;padding:5%;padding-top:30%;background-color:#fff;}
+        .evt_form_wrap.shown{display:block;opacity:1;transition:opacity 1s ease-in;}
+        .evt_form_wrap .btn_close_form_layer{position:absolute;top:10px;right:10px;width:30px;font-weight:bold;border:0;background:none;cursor:pointer;}
+        .evt_form_wrap .btn{display:block;width:100%;font-size:18px;padding:0.8em;text-align:center;background-color:#457FEE;color:#fff;border-radius:3px;outline:none;border:0;cursor:pointer;}
+        .steps{}
+        .step{padding-bottom:20%;}
+        .step h2{font-size:2em;font-weight:bold;padding-bottom:1em;}
     </style>
 </head>
 <body>
     <div class="evt_test_hero">
         <h1>evt landing page</h1>
+
+        <button class="btn_join_evt">참여하기</button>
     </div>
-    <div class="evt_form_wrap">
+    <div class="evt_form_wrap shown">
         <section>
             <div class="steps">
-                
 
+                <div class="step">
+                    <h2>휴대폰 번호를 알려주세요.</h2>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" name="" id="text1" placeholder="'-'없이 번호만 ex.01012345678" required="required" autocomplete="off" />
+                        <label for="text1">휴대폰 번호</label>
+                    </div>
+                </div>
+
+
+                <div class="step">
+                    <h2>이름을 알려주세요.</h2>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" name="" id="text1" placeholder="이름" required="required" autocomplete="off" />
+                        <label for="text1">이름</label>
+                    </div>
+                </div>
+
+                <button class="btn btn_name">확인</button>
             </div>                                         
             
         </section> 
 
-        <button>X</button>
+        <button class="btn_close_form_layer"><img src="../images/x.svg" alt=""></button>
     </div>
 
+    <script src="design.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('tester');
 
+            // form layer closing
+            const btnCloseFormLayer = document.querySelector('.btn_close_form_layer');
+            const btnJoinEvent = document.querySelector('.btn_join_evt');
+            const layerEventForm = document.querySelector('.evt_form_wrap');
+
+            btnJoinEvent.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (!layerEventForm.classList.contains('shown')) {
+                    layerEventForm.classList.add('shown');
+                }
+            });
+
+            btnCloseFormLayer.addEventListener('click', function(e) {
+                e.preventDefault();
+                // console.log(this.parentElement);
+                this.parentElement.classList.remove('shown');
+            });
+
+        });
+    </script>
 </body>
 </html>
