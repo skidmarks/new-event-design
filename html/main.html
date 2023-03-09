@@ -85,60 +85,265 @@
             font-size:12px;
         }
 
-        body{box-sizing:border-box;overflow:hidden;position:relative;font-family:'Noto Sans KR','맑은고딕','Malgun Gothic','Apple Gothic',sans-serif;}
+        body{box-sizing:border-box;position:relative;font-family:'Noto Sans KR','맑은고딕','Malgun Gothic','Apple Gothic',sans-serif;}
         body *{box-sizing:border-box;}
 
         /* landing sample */
         .evt_test_hero{position:relative;width:100%;height:100vh;display:flex;padding:5%;background:rgba(255,0,0,0.5);justify-content:center;align-items:center;flex-direction:column;justify-content: space-evenly;}
-        .evt_test_hero .btn_join_evt{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);display:block;width:90%;text-align:center;padding:10px;border:1px solid #ccc;}
+        .evt_test_hero .bottom_box{position:fixed;bottom:0;left:0;width:100%;padding:5%;background-color:#457FEE;}
+        .evt_test_hero .bottom_box .btn_join_evt{display:block;width:100%;text-align:center;padding:10px;border:1px solid #ccc;}
+        .evt_test_hero .bottom_box .btn_counsel{display:block;margin-top:10px;padding:10px;background-color:#fff;text-align:center;text-decoration:none;font-size:16px;font-weight:bold;color:#457FEE}
 
         .evt_form_wrap{display:none;position:absolute;top:0;left:0;width:100%;height:100vh;padding:5%;padding-top:30%;background-color:#fff;}
         .evt_form_wrap.shown{display:block;opacity:1;transition:opacity 1s ease-in;}
-        .evt_form_wrap .btn_close_form_layer{position:absolute;top:10px;right:10px;width:30px;font-weight:bold;border:0;background:none;cursor:pointer;}
+        .evt_form_wrap .btn_close_form_layer{position:absolute;top:10px;right:10px;width:40px;font-weight:bold;border:0;background:none;cursor:pointer;}
         .evt_form_wrap .btn{display:block;width:100%;font-size:18px;padding:0.8em;text-align:center;background-color:#457FEE;color:#fff;border-radius:3px;outline:none;border:0;cursor:pointer;}
+        .evt_form_wrap .btn_name_conf{display:none;}
+        .evt_form_wrap .btn_phone_conf{display:none;}
         .steps{}
         .step{padding-bottom:20%;}
-        .step h2{font-size:2em;font-weight:bold;padding-bottom:1em;}
+        .step h2{font-size:2em;font-weight:bold;padding-bottom:1em;line-height:1.4em;}
+        .step_phone{display:none;}
+        .reverse{display:flex;flex-direction:column-reverse;}
+
+
+        .phone_para{display:none;}
+        .phone_para p{padding-bottom:5%;line-height:1.4em;color:#787878;}
+
+        /* 퍼미션 레이어 */
+        .pmission_mask{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);display:none;}
+        .pmission_wrap{position:fixed;bottom:0;left:0;width:100%;background-color:#fff;display:none;}
+        .pmission_wrap .inner{padding:8% 5%;}
+        .pmission_wrap .inner h3{padding-bottom:1em;font-size:20px;font-weight:bold;color:#000;letter-spacing:-1px;}
+        .pmission_wrap .inner h3 + p{font-size:14px;letter-spacing:-1px;line-height:1.6em;padding-bottom:1em;}
+        .pmission_wrap .btn{display:block;width:100%;font-size:18px;padding:0.6em;text-align:center;background-color:#457FEE;color:#fff;border-radius:3px;outline:none;border:0;cursor:pointer;border:1px solid #457FEE;margin-top:3%;}
+        .pmission_wrap .btn.altC{border:1px solid #457FEE;color:#457FEE;background-color:#fff;}
+
+        /* 인증번호 레이어 */
+        .cert_numb_wrap{display:none;position:absolute;top:0;left:0;width:100%;height:100vh;padding:5%;padding-top:30%;background-color:#fff;}
+        .cert_numb_wrap.shown{display:block;opacity:1;transition:opacity 1s ease-in;}
+        .cert_numb_wrap .btn_close_form_layer{position:absolute;top:10px;right:10px;width:40px;font-weight:bold;border:0;background:none;cursor:pointer;}
+        .cert_numb_wrap .btn{display:block;width:100%;font-size:18px;padding:0.8em;text-align:center;background-color:#457FEE;color:#fff;border-radius:3px;outline:none;border:0;cursor:pointer;}
+        .cert_numb_wrap .btn_name_conf{display:none;}
+        .cert_numb_wrap .btn_phone_conf{display:none;}
+
+        /*퍼미션*/
+        .btn_details{position:absolute;top:50%;right:3%;transform:translateY(-50%);font-size:.9em;font-weight:300;color:#888 !important;vertical-align:middle;}
+        table {border-collapse:collapse; border-spacing:0;}
+
+        #per_top {width:100%; background-color:#efefef; padding:.8em 0;}
+        .agr_top {margin-left:.9em;}
+        #per_01, #per_02, #per_03 {width:100%;margin:0 auto;}
+        #per_01_s, #per_02_s, #per_03_s {width:90%; margin:0 auto;}
+
+        .agr_title_1, .agr_title_2, .agr_top label {font-weight:500; margin-bottom:.5em; margin-top:1.5em;}
+        .agr_title_1, .agr_title_2{position:relative;font-weight:500; margin:10px 8px;padding:10px 8px;width:100%;margin:0 auto;border:1px solid #e0e0e0;border-bottom:0;box-sizing:border-box;}
+        .agr_title_2 {border-bottom:1px solid #e0e0e0;}
+        .lb_txt{vertical-align:middle;padding-top:3px;}
+        .agr_title_1:after{content:"";display:block;clear:both;font-size:0;line-height:0;visibility:none;}
+        .agr_title_2:after{content:"";display:block;clear:both;font-size:0;line-height:0;visibility:none;}
+        .agr_title_3:after{content:"";display:block;clear:both;font-size:0;line-height:0;visibility:none;}
+
+        .list_t table {width:100%; text-align:center; margin:.5em 0;}
+        .list_t_3 table {width:100%; text-align:left; margin:.5em 0;}
+        .list_t th, .list_t_3 th {border:1px solid #e0e0e0; background:#f3f3f3; padding:.4em; vertical-align:middle;} 
+        .list_t td, .list_t_3 td {border:1px solid #e0e0e0; background:#fff; padding:.2em; vertical-align:middle;}
+
+        .outliner {border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;margin-top:2em;margin-bottom:2em;padding-bottom:1em;}
+
+        .prm_wrap {padding:0.5em;overflow:auto;border-left:1px solid #e2e2e2;border-right:1px solid #e2e2e2;background-color:#f8f8f8;border-top:1px solid #e2e2e2;line-height:1.3em;box-sizing:border-box;}
+        .prm_wrap.alt{border-top:0;border-bottom:1px solid #e2e2e2;}
+        .prm_wrap.fix_h {display:block;height:100px !important;}        
+
+        
+        .chk_each_box{display:inline-block;position:relative;overflow:hidden;width:6vw;height:6vw;vertical-align:middle;}
+        .chk_each_box label{display:inline-block;width:100%;height:100%;cursor:pointer;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url('../images/rds_off.gif');}
+        .chk_each_box input[type=checkbox]{position:absolute;top:-4em;left:-4em;display:none;}
+        .chk_each_box input[type=checkbox]:checked+label{background-image:url('../images/rds_on.gif');}
+
+
     </style>
 </head>
 <body>
     <div class="evt_test_hero">
         <h1>evt landing page</h1>
-
-        <button class="btn_join_evt">참여하기</button>
+        <div class="bottom_box">
+            <button class="btn_join_evt">참여하기</button>
+            <a class="btn_counsel" href="tel:01050534543">상담받기</a>
+        </div>
     </div>
     <div class="evt_form_wrap shown">
         <section>
             <div class="steps">
+                <div class="reverse">
+                    <div class="step step_name">
+                        <h2>이름을 알려주세요.</h2>
+                        <br>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" name="name" id="name" placeholder="이름" required="required" autocomplete="off" />
+                            <label for="name">이름</label>
+                        </div>
+                    </div><!--/step-->         
 
-                <div class="step">
-                    <h2>휴대폰 번호를 알려주세요.</h2>
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <input type="text" name="" id="text1" placeholder="'-'없이 번호만 ex.01012345678" required="required" autocomplete="off" />
-                        <label for="text1">휴대폰 번호</label>
-                    </div>
+                    <div class="step step_phone">
+                        <h2>휴대폰 번호를 알려주세요.</h2>
+                        <br>
+                        <br>
+                        <div class="input-group">
+                            <input type="text" name="phone" id="phone" placeholder="'-' 없이 번호만" required="required" autocomplete="off" />
+                            <label for="phone">휴대폰 번호</label>
+                        </div>
+                    </div><!--/step-->
+                </div><!--/reverse-->
+
+
+
+                <div class="phone_para">
+                    <p>
+                        <img src="../images/exclamation-triangle.svg" alt="알림" />
+                        입력하신 정보는 상담 신청 완료될 때까지 저장되지 않습니다.
+                    </p>
+
+                    <p>
+                        타인의 개인정보 도용 시 형사상 처벌을 받을 수 있으며, 정확한 정보를 입력하지 않을 경우 상품 안내 불가 등의 불이익을 받을 수 있습니다.
+                    </p>
                 </div>
 
+                <button class="btn btn_name_conf">확인</button>
+                <button class="btn btn_phone_conf">인증하기</button>
 
-                <div class="step">
-                    <h2>이름을 알려주세요.</h2>
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <input type="text" name="" id="text1" placeholder="이름" required="required" autocomplete="off" />
-                        <label for="text1">이름</label>
-                    </div>
-                </div>
-
-                <button class="btn btn_name">확인</button>
             </div>                                         
             
         </section> 
 
         <button class="btn_close_form_layer"><img src="../images/x.svg" alt=""></button>
-    </div>
+    </div><!--/evt_form_wrap-->
+
+
+    <div class="pmission_mask"></div>
+    <div class="pmission_wrap">
+        <div class="inner">
+            <h3>상담 신청을 하려면 동의가 필요해요.</h3>
+            <p>하기 동의를 거부할 권리는 있으나, (필수)항목에 대한 동의 거부 시 이벤트 참여 및 상품 안내가 불가능해 불이익이 있어요.</p>
+
+            <div id="per_01" class="line_top">
+                <div class="agr_title_1">
+                    <span class="chk_each_box"><input type="checkbox" name="agree" id="terms01" /><label for="terms01"></label></span>
+                    <label for="terms01"><em class="lb_txt">개인정보 수집 및 이용에 동의함 (필수)</em></label>
+                    <a href="#" class="btn_details">보기</a>
+                </div>
+                <div class="prm_wrap">
+                    <div class="list_t">
+                        <table summary="개인정보 수집 및 이용">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="23%">
+                                <col width="28%">
+                                <col width="">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>개인정보<br />수집자</th>
+                                    <th>개인정보<br />수집·이용목적</th>
+                                    <th>개인정보<br />수집항목</th>
+                                    <th>개인정보<br />보유·이용기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="5">㈜열심히<br />커뮤니케이션즈<br />(my포텐)</td>
+                                    <td>본인 식별 확인</td>
+                                    <td>성명, 성별, 생년월일</td>
+                                    <td class="b_txt">본인식별 완료 후<br />별도 저장 없음</td>
+                                </tr>
+                                <tr>
+                                    <td>이벤트 참여 확인 및 고객 민원 처리</td>
+                                    <td>성명, 성별, 생년월일, 이메일주소, 휴대폰번호</td>
+                                    <td rowspan="4" class="b_txt">수집일로부터 5년<br />(고객동의 철회 시<br />지체없이 파기)<br />
+                                    ※ 수집된 개인정보의 위탁은 서비스 제공에 필수적이므로 별도 동의를 받지 않습니다.
+                                    위탁에 관한 내용은 개인정보처리방침 전문을 확인하시면 됩니다.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>경품 발송, 추가경품 증정 관련 안내</td>
+                                    <td>성명, 이메일주소, 휴대폰번호</td>
+                                </tr>
+                                <tr>
+                                    <td>공통 활용 정보</td>
+                                    <td>[자동으로 수집되는 정보] 참여매체, 참여일시, 참여이벤트, 경품, IP Address</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- prm_wrap end -->
+            </div><!-- per_01 end -->
+            <div id="per_02">
+               <div class="agr_title_2">
+                    <span class="chk_each_box"><input type="checkbox" name="subAgree" id="terms02" /><label for="terms02"></label></span>
+                    <label for="terms02"><em class="lb_txt">마케팅 정보 수신에 동의함 (필수)</em></label>
+                    <a href="#" class="btn_details">보기</a>
+                </div>
+                <div class="prm_wrap">
+                    <div class="list_t">
+                        <table summary="마케팅 정보 수신">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="23%">
+                                <col width="28%">
+                                <col width="">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>개인정보<br />수집자</th>
+                                    <th>개인정보<br />수집·이용목적</th>
+                                    <th>개인정보<br />수집항목</th>
+                                    <th>개인정보<br />보유·이용기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>㈜열심히<br />커뮤니케이션즈<br />(my포텐)</td>
+                                    <td class="b_txt">수집된 개인정보를 활용한 통계 작성, 자사·제휴사 상품의 마케팅 및 맞춤 정보 제공</td>
+                                    <td>성명, 성별, 생년월일, 이메일주소, 휴대폰번호</td>
+                                    <td class="b_txt">수집일로부터 5년 (고객동의 철회시 지체없이 파기)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- prm_wrap end -->
+            </div><!-- per_02 end -->   
+            
+            <button class="btn btn_agree_pm">동의하기</button>
+            <button class="btn altC btn_close_pm">닫기</button>
+        </div>
+    </div><!--/pmission_wrap-->
+
+    <div class="cert_numb_wrap">
+        <section>
+            <div class="steps">
+                <div class="step step_cert">
+                    <h2>문자로 받은 인증번호를 <br>입력해 주세요.</h2>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" name="cert_num" id="cert_num" required="required" autocomplete="off" />
+                        <label for="cert_num">인증</label>
+                    </div>
+                </div>                
+                <div class="step step_cert">
+                    <h2>문자로 받은 인증번호를 <br>입력해 주세요.</h2>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" name="cert_num2" id="cert_num2" required="required" autocomplete="off" />
+                        <label for="cert_num2">인증</label>
+                    </div>
+                </div>                
+            </div>
+        </section>                
+        <button class="btn_close_form_layer"><img src="../images/x.svg" alt=""></button>
+    </div><!--/certNumb_wrap-->
 
     <script src="design.js"></script>
     <script>
@@ -149,6 +354,19 @@
             const btnCloseFormLayer = document.querySelector('.btn_close_form_layer');
             const btnJoinEvent = document.querySelector('.btn_join_evt');
             const layerEventForm = document.querySelector('.evt_form_wrap');
+            const paraPhone = document.querySelector('.phone_para');
+            const inputName = document.querySelector('#name');
+            const inputPhone = document.querySelector('#phone');
+            const btnConfName = document.querySelector('.btn_name_conf');
+            const btnConfPhone = document.querySelector('.btn_phone_conf');
+            const stepPhone = document.querySelector('.step_phone');
+            const pmask = document.querySelector('.pmission_mask');
+            const pmLayer = document.querySelector('.pmission_wrap');
+            const btnAgreePm = document.querySelector('.btn_agree_pm');
+            const btnClosePm = document.querySelector('.btn_close_pm');
+            const layerCertNumb = document.querySelector('.cert_numb_wrap');
+            console.log(inputName.value);
+
 
             btnJoinEvent.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -163,7 +381,103 @@
                 this.parentElement.classList.remove('shown');
             });
 
+            inputName.addEventListener('input', function(e) {
+                btnConfName.style.display = "block";
+            });
+
+            inputPhone.addEventListener('input', function(e) {
+                btnConfPhone.style.display = "block";
+            });
+
+            btnConfName.addEventListener('click', function(e) {
+                e.preventDefault();
+                stepPhone.style.display = "block";
+                this.style.display = "none";
+                // inputName.disabled = "disabled";
+                paraPhone.style.display = "block";
+            });
+            
+            btnConfPhone.addEventListener('click', function(e) {
+                e.preventDefault();
+                pmask.style.display = "block";
+                pmLayer.style.display = "block";
+            });
+
+            btnClosePm.addEventListener('click', function(e) {
+                e.preventDefault();
+                pmask.style.display = "none";
+                pmLayer.style.display = "none";
+            });
+
+            btnAgreePm.addEventListener('click', function(e) {
+                e.preventDefault();
+                layerCertNumb.style.display = "block";
+            });
         });
+
+;(function ($) {
+
+    $(function(){
+        
+        var $btnToggle = $('.btn_details');
+        var $allAgrBox = $('.prm_wrap');
+
+        var $chkAllAgr01 = $('.chk_all');
+        var $check = $('.chk');	
+        var $checkOpt = $('.chk.opt');	
+        var $checkReq = $('.chk.req');
+        var $required = $('.required');
+
+        $allAgrBox.hide();
+        
+
+        // 동의 상세 열고 닫는 토글
+        var agreeToggle = function(e) {
+            var $that = $(this);
+            var $eachBox = $that.parent().find("+.prm_wrap");
+            var $eachToggle = $that.siblings(".btn_details");
+
+            $eachToggle.show();
+
+
+            // this가 checkbox인지 아닌지
+            if (!$that.is(':checkbox')) {
+                e.preventDefault();		
+
+                if ($eachBox.is(':hidden')) {
+                    $eachBox.removeClass("fix_h").show();
+                    $that.text('닫기');
+                }else {
+                    $eachBox.hide();
+                    $that.text('보기');
+                }
+            }else {
+                if ($eachBox.is(':hidden')) {
+                    $eachBox.removeClass("fix_h").show();
+                    $that.text('닫기');
+                }else {
+                    $eachBox.hide();
+                    $that.text('보기');
+                }				
+            }	
+        };
+
+        // 버튼 클릭 시
+        $btnToggle.each(function () {		
+            var $this = $(this);
+            $this.on("click", agreeToggle);
+        });
+
+        // 전체동의
+        $chkAllAgr01.change(function () {
+            $required.show().addClass("fix_h");
+            $checkOpt.prop('checked', $(this).prop("checked"));
+            $checkReq.prop('checked', $(this).prop("checked"));
+    //			$(".btn_opt").trigger("click");
+        });
+    });
+
+})(jQuery);        
     </script>
 </body>
 </html>
