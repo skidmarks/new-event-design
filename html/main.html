@@ -25,55 +25,74 @@
     </div>
     <!-- /evt landing page -->
 
-    <div class="evt_form_wrap shown">
-        <section>
-            <div class="steps">
-                <div class="reverse">
-                    <div class="step step_name">
-                        <h2>이름을 알려주세요.</h2>
+    <!-- evt_form_wrap page -->
+    <div class="evt_form_page shown">
+        <div class="evt_form_wrap">
+            <section>
+                <div class="steps">
+                    <div class="reverse">
+                        <div class="step step_name">
+                            <h2>이름을 알려주세요.</h2>
+                            <div class="input-group">
+                                <input type="text" name="name" class="ipt_name" id="name" placeholder="이름" required="required" autocomplete="off" />
+                                <label for="name">이름</label>
+                            </div>
+                        </div><!--/step-->         
+
+                        <div class="step step_phone">
+                            <h2 class="tit_phone">휴대폰 번호를 알려주세요.</h2>
+                            <h2 class="info_tit"><span class="p_name"></span>님 정보가 맞나요?</h2>
+                            <div class="input-group">
+                                <input type="number" name="phone" class="ipt_phone" id="phone" placeholder="'-' 없이 번호만" required="required" maxlength="11" autocomplete="off" />
+                                <label for="phone">휴대폰 번호</label>
+                            </div>
+                        </div><!--/step-->
+                    </div><!--/reverse-->
+
+                    <button class="btn btn_name_conf">확인</button>
+                    
+                    
+                    <div class="phone_para">
+                        <p>
+                            <img src="../images/exclamation-triangle.svg" alt="알림" />
+                            입력하신 정보는 상담 신청 완료될 때까지 저장되지 않습니다.
+                        </p>
+                        
+                        <p>
+                            타인의 개인정보 도용 시 형사상 처벌을 받을 수 있으며, 정확한 정보를 입력하지 않을 경우 상품 안내 불가 등의 불이익을 받을 수 있습니다.
+                        </p>
+                    </div>
+                    
+                    <button class="btn btn_phone_conf">인증하기</button>
+                    
+                </div>                                         
+                
+            </section> 
+        </div><!--/evt_form_wrap-->
+        <!-- /evt_form_wrap page -->
+
+        <!-- cert_numb_wrap -->
+        <div class="cert_numb_wrap">
+            <section>
+                <div class="steps">
+                    <div class="step step_cert">
+                        <h2>문자로 받은 인증번호를 <br>입력해 주세요.</h2>
                         <br>
                         <br>
-                        <div class="input-group">
-                            <input type="text" name="name" id="name" placeholder="이름" required="required" autocomplete="off" />
-                            <label for="name">이름</label>
+                        <div class="input-group alt">
+                            <input type="text" name="cert_num" id="cert_num" class="cert_num" placeholder="인증번호 6자리" required="required" autocomplete="off" />
                         </div>
-                    </div><!--/step-->         
-
-                    <div class="step step_phone">
-                        <h2>휴대폰 번호를 알려주세요.</h2>
-                        <br>
-                        <br>
-                        <div class="input-group">
-                            <input type="text" name="phone" id="phone" placeholder="'-' 없이 번호만" required="required" autocomplete="off" />
-                            <label for="phone">휴대폰 번호</label>
-                        </div>
-                    </div><!--/step-->
-                </div><!--/reverse-->
-
-
-
-                <div class="phone_para">
-                    <p>
-                        <img src="../images/exclamation-triangle.svg" alt="알림" />
-                        입력하신 정보는 상담 신청 완료될 때까지 저장되지 않습니다.
-                    </p>
-
-                    <p>
-                        타인의 개인정보 도용 시 형사상 처벌을 받을 수 있으며, 정확한 정보를 입력하지 않을 경우 상품 안내 불가 등의 불이익을 받을 수 있습니다.
-                    </p>
+                    </div>                            
                 </div>
-
-                <button class="btn btn_name_conf">확인</button>
-                <button class="btn btn_phone_conf">인증하기</button>
-
-            </div>                                         
-            
-        </section> 
-
-        <button class="btn_close_form_layer"><img src="../images/x.svg" alt=""></button>
-    </div><!--/evt_form_wrap-->
+            </section>                
+            <button class="btn_close_info_cert"><img src="../images/left-alt.svg" alt="뒤로가기"></button>
+        </div><!--/certNumb_wrap-->
+        <button class="btn_close_form_layer"><img src="../images/x.svg" alt="닫기"></button>        
+    </div><!-- evt_form_page -->    
+    <!-- /cert_numb_wrap -->
 
 
+    <!-- permission page -->
     <div class="pmission_mask"></div>
     <div class="pmission_wrap">
         <div class="inner">
@@ -171,31 +190,6 @@
             <button class="btn altC btn_close_pm">닫기</button>
         </div>
     </div><!--/pmission_wrap-->
-
-    <div class="cert_numb_wrap">
-        <section>
-            <div class="steps">
-                <div class="step step_cert">
-                    <h2>문자로 받은 인증번호를 <br>입력해 주세요.</h2>
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <input type="text" name="cert_num" id="cert_num" required="required" autocomplete="off" />
-                        <label for="cert_num">인증</label>
-                    </div>
-                </div>                
-                <div class="step step_cert">
-                    <h2>문자로 받은 인증번호를 <br>입력해 주세요.</h2>
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <input type="text" name="cert_num2" id="cert_num2" required="required" autocomplete="off" />
-                        <label for="cert_num2">인증</label>
-                    </div>
-                </div>                
-            </div>
-        </section>                
-        <button class="btn_close_form_layer"><img src="../images/x.svg" alt=""></button>
-    </div><!--/certNumb_wrap-->
+    <!-- /permission page -->    
 </body>
 </html>

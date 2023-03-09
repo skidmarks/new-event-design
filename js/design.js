@@ -2,12 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('tester');
 
     // form layer closing
+    const bodyEle = document.querySelector('body');
     const btnCloseFormLayer = document.querySelector('.btn_close_form_layer');
     const btnJoinEvent = document.querySelector('.btn_join_evt');
-    const layerEventForm = document.querySelector('.evt_form_wrap');
+    const layerEventForm = document.querySelector('.evt_form_page');
     const paraPhone = document.querySelector('.phone_para');
-    const inputName = document.querySelector('#name');
-    const inputPhone = document.querySelector('#phone');
+    const inputName = document.querySelector('.ipt_name');
+    const inputPhone = document.querySelector('.ipt_phone');
     const btnConfName = document.querySelector('.btn_name_conf');
     const btnConfPhone = document.querySelector('.btn_phone_conf');
     const stepPhone = document.querySelector('.step_phone');
@@ -16,6 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAgreePm = document.querySelector('.btn_agree_pm');
     const btnClosePm = document.querySelector('.btn_close_pm');
     const layerCertNumb = document.querySelector('.cert_numb_wrap');
+    const personName = document.querySelector('.p_name');
+    const phoneTitle = document.querySelector('.tit_phone');
+    const infoTitle = document.querySelector('.info_tit');
+    const btnCloseInfo = document.querySelector('.btn_close_info_cert');
+
+    const certNumTester = document.querySelector('.cert_num');
+
     console.log(inputName.value);
 
 
@@ -30,14 +38,30 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         // console.log(this.parentElement);
         this.parentElement.classList.remove('shown');
+        resetInputText();
+        resetInputCheck();
+        layerCertNumb.classList.remove('shown');
+        stepPhone.style.display = "none";
+        paraPhone.style.display = "none";
+        btnConfPhone.style.display = "none";
+        infoTitle.style.display = "none";
+        phoneTitle.style.display = "block";
     });
 
     inputName.addEventListener('input', function(e) {
         btnConfName.style.display = "block";
+        personName.textContent = e.target.value;
     });
 
     inputPhone.addEventListener('input', function(e) {
         btnConfPhone.style.display = "block";
+        if(e.target.value.length == 11) {
+            phoneTitle.style.display = "none";
+            infoTitle.style.display = "block";
+        } else{
+            phoneTitle.style.display = "block";
+            infoTitle.style.display = "none";          
+        }
     });
 
     btnConfName.addEventListener('click', function(e) {
@@ -46,24 +70,59 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.display = "none";
         // inputName.disabled = "disabled";
         paraPhone.style.display = "block";
+        inputName.classList.add('blur');
     });
     
     btnConfPhone.addEventListener('click', function(e) {
         e.preventDefault();
         pmask.style.display = "block";
         pmLayer.style.display = "block";
+        bodyEle.classList.add('over_hide');
     });
 
     btnClosePm.addEventListener('click', function(e) {
         e.preventDefault();
         pmask.style.display = "none";
         pmLayer.style.display = "none";
+        bodyEle.classList.remove('over_hide');
+        resetInputCheck();
     });
 
     btnAgreePm.addEventListener('click', function(e) {
         e.preventDefault();
-        layerCertNumb.style.display = "block";
+        layerCertNumb.classList.add('shown');
+        pmask.style.display = "none";
+        pmLayer.style.display = "none";
+        bodyEle.classList.remove('over_hide');
     });
+
+    btnCloseInfo.addEventListener('click', function(e) {
+        e.preventDefault();
+        layerCertNumb.classList.remove('shown');
+    });
+
+    function resetInputText() {
+        const allFormInputs = layerEventForm.querySelectorAll('input');
+        allFormInputs.forEach(function(input) {
+            input.value = '';
+        });
+    }
+    function resetInputCheck() {
+        const allPmissionInputs = pmLayer.querySelectorAll('input');
+        allPmissionInputs.forEach(function(check) {
+            check.checked = false;
+        });
+    }
+
+    // 인증번호 테스트
+    // certNumTester.addEventListener('input', function(e) {
+    //     if(e.target.value == "123456") {
+    //         alert('상담신청완료');
+    //     } else{
+    //         alert('잘못된 번호입니다.');
+    //     }
+    // });
+
 });
 
 ;(function ($) {
