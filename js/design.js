@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const phoneTitle = document.querySelector('.tit_phone');
     const infoTitle = document.querySelector('.info_tit');
     const btnCloseInfo = document.querySelector('.btn_close_info_cert');
+    const layerCompleted = document.querySelector('.completed_wrap');
 
     const certNumTester = document.querySelector('.cert_num');
 
@@ -114,14 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 인증번호 테스트
-    // certNumTester.addEventListener('input', function(e) {
-    //     if(e.target.value == "123456") {
-    //         alert('상담신청완료');
-    //     } else{
-    //         alert('잘못된 번호입니다.');
-    //     }
-    // });
+    //인증번호 테스트
+    certNumTester.addEventListener('change', function(e) {
+        if(e.target.value == "123456") {
+            layerCompleted.style.display = "flex"
+        } else{
+            alert('잘못된 번호입니다.');
+        }
+    });
 
 });
 
