@@ -43,7 +43,7 @@
                             <h2 class="tit_phone">휴대폰 번호를 알려주세요.</h2>
                             <h2 class="info_tit"><span class="p_name"></span>님 정보가 맞나요?</h2>
                             <div class="input-group">
-                                <input type="number" name="phone" class="ipt_phone" id="phone" placeholder="'-' 없이 번호만" required="required" maxlength="11" autocomplete="off" />
+                                <input type="number" name="phone" class="ipt_phone" value="" id="phone" placeholder="'-' 없이 번호만" required="required" maxlength="11" autocomplete="off" />
                                 <label for="phone">휴대폰 번호</label>
                             </div>
                         </div><!--/step-->
@@ -87,6 +87,8 @@
             </section>                
             <button class="btn_close_info_cert"><img src="../images/left-alt.svg" alt="뒤로가기"></button>
         </div><!--/certNumb_wrap-->
+
+
         <button class="btn_close_form_layer"><img src="../images/x.svg" alt="닫기"></button>        
     </div><!-- evt_form_page -->    
     <!-- /cert_numb_wrap -->
@@ -203,7 +205,12 @@
             080-519-1234(무료)
         </p>
 
-        <button class="btn">닫기</button>
+        <button class="btn btn_close_completed">닫기</button>
+    </div>
+
+    <div class="joined_wrap">
+        <img src="../images/joined_yet.png" alt="죄송합니다. 고객님은 이미 참여하셨습니다(본인 명의 연락처당 1회 참여가능) - 개인정보 수집 침 이용 동의 철회: 080-519-1234(무료)">
+        <button class="btn btn_close_joined">닫기</button>
     </div>
 </body>
 </html>
